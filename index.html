@@ -34,13 +34,13 @@ parent{
 <script>
  //Create the SVG
 var svg = d3.select("svg").append("svg")
-    .attr("width", 800)
-    .attr("height", 600);
+    .attr("width", 550)
+    .attr("height", 350);
 
 //Create an SVG path (based on bl.ocks.org/mbostock/2565344)
 svg.append("path")
     .attr("id", "wavy") //Unique id of the path
-    .attr("d", "M 0,300 A 200,200 0 0,1 400,300") //SVG path
+    .attr("d", "M 0,145 A 200,200 0 0,1 400,300") //SVG path
     .style("fill", "none")
     .style("stroke", "#AAAAAA");
 
