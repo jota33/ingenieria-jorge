@@ -28,11 +28,13 @@ parent{
 <div class="parrent"> 
       <img class="responsive center" 
  src="http://placekitten.com/800/600">
+<svg style="width:500px; height:500px; border:1px lightgray solid;"></svg>   
 <script>
-svg.append("text")
-	.attr("x", 20)
-	.attr("y", 20)
-	.text("This is well-styled text");
+d3.select("svg")
+  .append("text")
+  .attr("x", 20)
+  .attr("y", 20)
+   .text("This is well-styled text");
 </script>
 
 </div>
