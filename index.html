@@ -26,11 +26,14 @@ parent{
 
 </style>
 <div class="parrent"> 
-      <img class="responsive center" 
- src="http://placekitten.com/800/600">
+      <svg class="responsive center" >
+        <rect x="0" y="0" width="550" height="350"/>
+         <polyline points="0,0 0,350 550,350"/>
+         <text x="0" y="50%" fill="#ffffff" stroke="none" width="100%">Simplified example</text>
+ </svg>
 <script>
  //Create the SVG
-var svg = d3.select("img").append("svg")
+var svg = d3.select("svg").append("svg")
     .attr("width", 800)
     .attr("height", 600);
 
