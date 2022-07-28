@@ -77,7 +77,7 @@ parent{
     .style("stroke", "white")
     .style("fill", function(i){return myColor(Math.floor(i % 10))})
     .attr("r", Math.sqrt(current_width*current_height)/200)
-    .attr("cx", function(d, i){return Math.floor(i % 10)})
+    .attr("cx", function(d, i){return Math.floor(i % 50)})
     .attr("cy", function(d, i){return Math.floor(i % 100)})
     .transition() // <------- TRANSITION STARTS HERE --------
     .delay(function(d,i){ return 1000*Math.random() }) 
