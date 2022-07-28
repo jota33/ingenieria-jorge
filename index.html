@@ -76,11 +76,7 @@ parent{
     .attr("r", Math.sqrt(current_width*current_height)/160)
     .attr("cx", function(d, i){return current_width/2 +  Math.sqrt(current_width*current_height)*Math.random()*1/3})
     .attr("cy", function(d, i){return current_height/2 + Math.sqrt(current_width*current_height)*Math.random()*1/3})
-    .transition()            
-    .delay(0)            
-    .duration(1000)
-    .attr("transform","translate(150,150)")
-    .on("mouseover", function(){d3.select(this).style("fill", "aliceblue");})
+    .on("mouseover", animateFirstStep)
     .on("mouseout", function(){d3.select(this).style("fill", "white");})
     .on("mousedown", animateFirstStep);
    
