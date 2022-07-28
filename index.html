@@ -3,10 +3,7 @@
 <head>
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
- <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
- <!-- <link rel="stylesheet" href="https://jota33.github.io/ingenieria-jorge/style.css"> -->
-</head>
-
+    
  <style>
  .responsive{
   max-width:100%;
@@ -28,78 +25,102 @@ parent{
     font: bold 36px Verdana, Helvetica, Arial, sans-serif;
     fill: red;
   }
+     
 </style>
-<div class="parrent"> 
+</head>
+<body>
+    <div id="viz" class="parrent"> 
       <svg class="responsive center" >
         <rect x="0" y="0" width="550" height="350"/>
          <polyline points="0,0 0,350 550,350"/>
-         <text x="0" y="50%" fill="#ffffff" stroke="none" width="100%">Simplified example</text>
+         <text x="0" y="50%" fill="#ffffff" stroke="none" width="100%">Ingenieria Jorge</text>
  </svg>
-<script>
- //Create the SVG
-var svg = d3.select("svg").append("svg")
-    .attr("width", 550)
-    .attr("height", 350);
+    
+<script type="text/javascript">
+    var dataset = [];
+    var margin = {
+     top: 20,
+     right: 20,
+     bottom: 0,
+     left: 40};
+    
+    current_width = window.innerWidth - margin.top - margin.bottom ;
+    current_height = window.innerHeight - margin.left - margin.right ;
+    
+    i = 0;
+    Nt = 28;
+    Nx = 1*Nt;
 
-var data = d3.range(50).map(function(d) {
-  return {
-    x1: Math.random() * 300,
-    x2: Math.random() * 300,
-    y1: Math.random() * 150,
-    y2: Math.random() * 150,
-  }
-});
-var color = d3.scaleOrdinal(d3.schemeCategory20);
-var lines = svg.selectAll(null)
-  .data(data)
-  .enter()
-  .append("line")
-  .attr("x1", function(d) {
-    return d.x1
-  })
-  .attr("x2", function(d) {
-    return d.x2
-  })
-  .attr("y1", function(d) {
-    return d.y1
-  })
-  .attr("y2", function(d) {
-    return d.y2
-  })
-  .style("stroke", function(_, i) {
-    return color(i)
-  })
-  .style("stroke-width", 1);
-svg.append('line')
-        .style("stroke", "white")
-        .style("stroke-width", 10)
-        .attr("x1", 0)
-        .attr("y1", 0)
-        .attr("x2", 550)
-        .attr("y2", 350);     
-//Create an SVG path (based on bl.ocks.org/mbostock/2565344)
-//svg.append("path")
-  //  .attr("id", "wavy") //Unique id of the path
-    //.attr("d", "M 0,145 A 200,200 0 0,1 400,300") //SVG path
-    //.style("fill", "none")
-    //.style("stroke", "#AAAAAA");
+    for(i=0; i<Nt; i++){
+        dataset.push(Math.round(Math.random()*100));
+    }
 
-//Create an SVG text element and append a textPath element
-svg.append("text")
-   .append("textPath") //append a textPath to the text element
-    .attr("xlink:href", "#wavy") //place the ID of the path here
-    .style("text-anchor","middle") //place the text halfway on the arc
-    .attr("startOffset", "50%")
-    .text("Yay, my text is on a wavy path")
-    .style("color", "red")  ;
+    var sampleSVG = d3.select("#viz")
+    .append("svg")
+    .attr("width", current_width)
+    .attr("height",current_height)
+    .attr("top", 0)
+    .attr("right", 0)
+    .attr("bottom", 0)
+    .attr("left", 0);    
+    
+    // Option 1: give 2 color names
+    var myColor = d3.scaleLinear().domain([1,10])
+    .range(["white", "black"]);
+
+    sampleSVG.selectAll("circle")
+    .data(dataset)
+    .enter().append("circle")
+    .style("stroke", "gray")
+    .style("fill", function(i){return myColor(i) })
+    .attr("r", Math.sqrt(current_width*current_height)/160)
+    .attr("cx", function(d, i){return current_width/2 +  Math.sqrt(current_width*current_height)*Math.cos(i*2*Math.PI/Nt)/3})
+    .attr("cy", function(d, i){return current_height/2 + Math.sqrt(current_width*current_height)*Math.sin(i*2*Math.PI/Nt)/3})
+    .on("mouseover", function(){d3.select(this).style("fill", "aliceblue");})
+    .on("mouseout", function(){d3.select(this).style("fill", "white");})
+    .on("mousedown", animateFirstStep);
+   
+    function animateFirstStep(){
+    d3.select(this)
+      .transition()            
+        .delay(0)            
+        .duration(1000)
+        .attr("transform","translate(150,150)");
+        .attr("r", 8)
+ //       .attr("cx",current_width/2)
+ //       .attr("cy",current_height/2)
+        .each("end", animateSecondStep);
+};
+
+    function animateSecondStep(){
+    d3.select(this)
+      .transition()
+        .duration(1000)
+        .attr("r", 40);
+};
+    
+
+
+// Create data
+var data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+// Option 2: Color brewer.
+
+var myColor = d3.scaleSequential().domain([1,10])
+  .interpolator(d3.interpolatePuRd);
+sampleSVG.selectAll(".secondrow").data(data).enter().append("circle").attr("cy", function(d,i){return 30 + i*60}).attr("cx",current_width/2 ).attr("r", 19).attr("fill", function(d){return myColor(d) })
+
+// Option 3: Viridis.
+
+var myColor = d3.scaleSequential().domain([1,10])
+  .interpolator(d3.interpolateViridis);
+    
+sampleSVG.selectAll(".secondrow").data(data).enter().append("circle").attr("cy", function(d,i){return 30 + i*60}).attr("cx", current_width/2).attr("r", 19).attr("fill", function(d){return myColor(d) })
 
 </script>
 
 </div>
 
-
-
- <body>
-
 </body>
+   
 </html>
