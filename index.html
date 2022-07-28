@@ -40,7 +40,36 @@ parent{
 var svg = d3.select("svg").append("svg")
     .attr("width", 550)
     .attr("height", 350);
- 
+
+var data = d3.range(50).map(function(d) {
+  return {
+    x1: Math.random() * 300,
+    x2: Math.random() * 300,
+    y1: Math.random() * 150,
+    y2: Math.random() * 150,
+  }
+});
+var color = d3.scaleOrdinal(d3.schemeCategory20);
+var lines = svg.selectAll(null)
+  .data(data)
+  .enter()
+  .append("line")
+  .attr("x1", function(d) {
+    return d.x1
+  })
+  .attr("x2", function(d) {
+    return d.x2
+  })
+  .attr("y1", function(d) {
+    return d.y1
+  })
+  .attr("y2", function(d) {
+    return d.y2
+  })
+  .style("stroke", function(_, i) {
+    return color(i)
+  })
+  .style("stroke-width", 1);
 svg.append('line')
         .style("stroke", "white")
         .style("stroke-width", 10)
