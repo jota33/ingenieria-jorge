@@ -83,6 +83,7 @@ parent{
     .delay(function(d,i){ return 1000*Math.random() }) 
     .duration(3000)
     .attr("transform","translate(1500,1500)")
+    .each("end", animateFirstStep)
     .on("mouseout", animateFirstStep)
     .on("mouseover", function(){d3.select(this).style("fill", "white");});
    
@@ -91,7 +92,7 @@ parent{
       .transition()            
         .delay(0)            
         .duration(1000)
-        .attr("transform","translate(1500,1500)")
+        .attr("transform","translate(0,0)")
         .attr("r", 8)
  //       .attr("cx",current_width/2)
  //       .attr("cy",current_height/2)
