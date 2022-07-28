@@ -75,7 +75,7 @@ parent{
     .style("fill", function(i){return myColor(i) })
     .attr("r", Math.sqrt(current_width*current_height)/100)
     .attr("cx", function(d, i){return i})
-    .attr("cy", function(d, i){return i})
+    .attr("cy", function(d, i){return 0})
     .on("mouseout", animateFirstStep)
     .on("mouseover", function(){d3.select(this).style("fill", "white");});
    
