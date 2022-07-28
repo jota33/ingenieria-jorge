@@ -23,7 +23,7 @@ parent{
 
   text {
     font: bold 36px Verdana, Helvetica, Arial, sans-serif;
-    fill: red;
+    fill: gray;
   }
      
 </style>
@@ -48,7 +48,7 @@ parent{
     current_height = window.innerHeight - margin.left - margin.right ;
     
     i = 0;
-    Nt = 28;
+    Nt = 1000;
     Nx = 1*Nt;
 
     for(i=0; i<Nt; i++){
@@ -73,19 +73,18 @@ parent{
     .enter().append("circle")
     .style("stroke", "gray")
     .style("fill", function(i){return myColor(i) })
-    .attr("r", Math.sqrt(current_width*current_height)/160)
-    .attr("cx", function(d, i){return current_width/2 +  Math.sqrt(current_width*current_height)*Math.random()*1/3})
-    .attr("cy", function(d, i){return current_height/2 + Math.sqrt(current_width*current_height)*Math.random()*1/3})
-    .on("mouseover", animateFirstStep)
-    .on("mouseout", function(){d3.select(this).style("fill", "white");})
-    .on("mousedown", animateFirstStep);
+    .attr("r", Math.sqrt(current_width*current_height)/360)
+    .attr("cx", function(d, i){Math.sqrt(current_width*current_height)*Math.random()*1/3})
+    .attr("cy", function(d, i){Math.sqrt(current_width*current_height)*Math.random()*1/3})
+    .on("mouseout", animateFirstStep)
+    .on("mouseover", function(){d3.select(this).style("fill", "white");});
    
     function animateFirstStep(){
     d3.select(this)
       .transition()            
         .delay(0)            
         .duration(1000)
-        .attr("transform","translate(150,150)")
+        .attr("transform","translate(1500,1500)")
         .attr("r", 8)
  //       .attr("cx",current_width/2)
  //       .attr("cy",current_height/2)
