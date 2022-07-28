@@ -82,8 +82,7 @@ parent{
     .transition() // <------- TRANSITION STARTS HERE --------
     .delay(function(d,i){ return 1000*Math.random() }) 
     .duration(3000)
-    .attr("transform","translate(1500,1500)")
-    .animateFirstStep();
+    .attr("transform","translate(1500,1500)");
    
     function animateFirstStep(){
     d3.select(this)
@@ -104,6 +103,7 @@ parent{
         .attr("r", 40);
 };
     
+animateFirstStep();
 
 
 // Create data
