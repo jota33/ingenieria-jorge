@@ -82,7 +82,9 @@ parent{
     .transition() // <------- TRANSITION STARTS HERE --------
     .delay(function(d,i){ return 1000*Math.random() }) 
     .duration(3000)
-    .attr("transform","translate(1500,1500)");
+    .attr("transform","translate(1500,1500)")
+    .delay(function(d,i){ return 1000*Math.random() }) 
+    .attr("transform","translate(0,0)");
    
     function animateFirstStep(){
     d3.select(this)
