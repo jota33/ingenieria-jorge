@@ -74,8 +74,8 @@ parent{
     .style("stroke", "gray")
     .style("fill", function(i){return myColor(i) })
     .attr("r", Math.sqrt(current_width*current_height)/100)
-    .attr("cx", function(d, i){i)
-    .attr("cy", function(d, i){i})
+    .attr("cx", function(d, i){return i)
+    .attr("cy", function(d, i){return i})
     .on("mouseout", animateFirstStep)
     .on("mouseover", function(){d3.select(this).style("fill", "white");});
    
