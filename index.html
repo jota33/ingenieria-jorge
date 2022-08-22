@@ -40,6 +40,28 @@ parent{
 <input type="number" id="buttonSize" value=13>
 <!-- Create a div where the circle will take place -->
 <div id="dataviz_buttonEventListener"></div>
+        <script>
+
+// Initialize a circle
+var theCircle = d3.select("#dataviz_buttonEventListener")
+  .append("svg")
+  .append("circle")
+    .attr("cx", 100)
+    .attr("cy", 70)
+    .attr("stroke", "black")
+    .style("fill", "#69b3a2")
+    .attr("r", 20)
+
+// A function that update the color circle
+function changeSize() {
+  theCircle
+    .attr("r", this.value)
+}
+
+// Add an event listener to the button created in the html part
+d3.select("#buttonSize").on("input", changeSize )
+
+</script>
          <text x="0" y="50%" fill="#ffffff" stroke="none" width="100%">Ingenieria Jorge</text>
     
 <script type="text/javascript">
