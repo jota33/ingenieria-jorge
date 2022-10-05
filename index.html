@@ -42,9 +42,9 @@ parent{
 <div id="dataviz_buttonEventListener"></div>
 
 <div>
-  <input type="radio" id="colorButton" name="size" value="1"> Small<br>
-  <input type="radio" id="colorButton" name="size" value="10"> Medium<br>
-  <input type="radio" id="colorButton" name="size" value="100"> Big <br>
+  <input type="radio" id="colorButton" name="colorButton" value="1"> Small<br>
+  <input type="radio" id="colorButton" name="colorButton" value="10"> Medium<br>
+  <input type="radio" id="colorButton" name="colorButton" value="100"> Big <br>
 </div>
 
 <script>
@@ -67,7 +67,7 @@ function changeSize() {
     
     // Function that change a color
 function changeColorSize() {
-  var radioValue = $("input[name='size']:active");
+  var radioValue = $("input[name='colorButton']:active");
   console.log(radioValue)
   theCircle
     .transition()
