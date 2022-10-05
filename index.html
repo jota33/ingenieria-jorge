@@ -47,6 +47,21 @@ parent{
   <input type="radio" name="gender" value="other"> Other<br>
 </div>
         <script>
+        
+        // Function that change a color
+function changeColor() {
+  var radioValue = $("input[name='colorButton']:active");
+  console.log(radioValue)
+  theCircles
+    .transition()
+    .style("fill", radioValue)
+}
+
+// Event listener to the radio button
+d3.select("#colorButton").on("change", changeColor )
+             <\script>
+   
+        <script>
 
 // Initialize a circle
 var theCircle = d3.select("#viz1")
