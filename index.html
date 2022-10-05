@@ -43,7 +43,7 @@ parent{
         <script>
 
 // Initialize a circle
-var theCircle = d3.select("#dataviz_buttonEventListener")
+var theCircle = d3.select("#viz")
   .append("svg")
   .append("circle")
     .attr("cx", 100)
@@ -63,25 +63,6 @@ d3.select("#buttonSize").on("input", changeSize )
 
 </script>
     
-<script>
-
-// Create data
-var data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-
-// Option 2: Color brewer.
-
-var myColor = d3.scaleSequential().domain([1,10])
-  .interpolator(d3.interpolatePuRd);
-sampleSVG.selectAll(".secondrow").data(data).enter().append("circle").attr("cy", function(d,i){return 30 + i*60}).attr("cx",current_width/2 ).attr("r", 19).attr("fill", function(d){return myColor(d) })
-
-// Option 3: Viridis.
-
-var myColor = d3.scaleSequential().domain([1,10])
-  .interpolator(d3.interpolateViridis);
-    
-sampleSVG.selectAll(".secondrow").data(data).enter().append("circle").attr("cy", function(d,i){return 30 + i*60}).attr("cx", current_width/2).attr("r", 19).attr("fill", function(d){return myColor(d) })
-
-</script>
 
 </div>
 
