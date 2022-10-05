@@ -42,19 +42,19 @@ parent{
 <div id="dataviz_buttonEventListener"></div>
 
 <div>
-  <input type="radio" name="gender" value="male"> Male<br>
-  <input type="radio" name="gender" value="female"> Female<br>
-  <input type="radio" name="gender" value="other"> Other<br>
+  <input type="radio" name="size" value="1"> Male<br>
+  <input type="radio" name="size" value="10"> Female<br>
+  <input type="radio" name="size" value="100"> Other<br>
 </div>
         <script>
         
         // Function that change a color
-function changeColor() {
-  var radioValue = $("input[name='colorButton']:active");
+function changeColorSize() {
+  var radioValue = $("input[name='size']:active");
   console.log(radioValue)
   theCircles
     .transition()
-    .style("fill", radioValue)
+    .attr("r", radioValue)
 }
 
 // Event listener to the radio button
