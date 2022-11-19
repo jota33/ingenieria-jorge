@@ -6,79 +6,39 @@
 </head>
     
 <body>
-     <div id="dataviz_buttonEventListener"></div>
-     <input type="number" id="buttonSize" value=13>
-     <svg id="s1" height=200 width=450></svg>
-    
-<!-- Create a div where the circle will take place -->
-
-
-          <!-- Add  button-->
-
 <script>
+	var width = 400, height = 400;
+	var data = [10, 15, 20, 25, 30];
+	
+	var svg = d3.select("body")
+		.append("svg")
+		.attr("width", width)
+		.attr("height", height);
 
-// Initialize a circle
-var theCircle = d3.select("#s1")
-  .append("svg")
-  .append("circle")
-    .attr("cx", 0)
-    .attr("cy", 0)
-    .attr("stroke", "black")
-    .style("fill", "#69b3a2")
-    .attr("r", 20)
+	var xscale = d3.scaleLinear()
+		.domain([0, d3.max(data)])
+		.range([0, width - 100]);
 
-// A function that update the color circle
-function changeSize() {
-  theCircle
-    .attr("r", this.value)
-}
-    
-    // Function that change a color
-function changeColorSize() {
-  var radioValue = $("input[name='colorButton']:active");
-  console.log(radioValue)
-  theCircle
-    .transition()
-    .attr("r", radioValue)
-}
+	var yscale = d3.scaleLinear()
+			.domain([0, d3.max(data)])
+			.range([height/2, 0]);
 
+	var x_axis = d3.axisBottom()
+			.scale(xscale);
 
-// Add an event listener to the button created in the html part
-d3.select("#buttonSize").on("input", changeSize )
+	var y_axis = d3.axisLeft()
+			.scale(yscale);
 
-// Event listener to the radio button
-d3.select("#colorButton").on("change", changeColorSize )
-</script>
-          
-    <script>
-// Select the svg area
-var svg = d3.select("#s1")
+		svg.append("g")
+		   .attr("transform", "translate(50, 10)")
+		   .call(y_axis);
 
-// Create a scale: transform value in pixel
-var x = d3.scaleLinear()
-    .domain([0, 100])         // This is the min and the max of the data: 0 to 100 if percentages
-    .range([0, 400]);       // This is the corresponding value I want in Pixel
+	var xAxisTranslate = height/2 + 10;
 
-var xa = d3.scaleLinear()
-    .domain([0, 100])         // This is the min and the max of the data: 0 to 100 if percentages
-    .range([0, 100]);       // This is the corresponding value I want in Pixel
-
-// Show the axis that corresponds to this scale
-svg.call(d3.axisTop(x));
-// Add 3 dots for 0, 50 and 100%
-svg.append("circle")
-  .attr("cx", x(10)).attr("cy", 100).attr("r", 40).style("fill", "blue");
-svg.append("circle")
-  .attr("cx", x(50)).attr("cy", 100).attr("r", 40).style("fill", "red");
-svg.append("circle")
-  .attr("cx", x(100)).attr("cy", 100).attr("r", 40).style("fill", "green");
-        
-svg.call(d3.axisBottom(xa));
+		svg.append("g")
+				.attr("transform", "translate(50, " + xAxisTranslate  +")")
+				.call(x_axis)
 
 </script>
- 
-</div>
-
 </body>
-   
 </html>
