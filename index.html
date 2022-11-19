@@ -6,9 +6,8 @@
 </head>
     
 <body>
-    <div id="s1"> 
-              <rect x="0" y="0" width="1550" height="550"/>
-
+    <svg id="s1" height=200 width=450></svg>
+   
       <div id ="s2">
           <input type="number" id="buttonSize" value=13>
 <!-- Create a div where the circle will take place -->
@@ -61,7 +60,7 @@ d3.select("#colorButton").on("change", changeColorSize )
             <div id ="s3">
     <script>
 // Select the svg area
-var svg = d3.select("#s2")
+var svg = d3.select("#s1")
 
 // Create a scale: transform value in pixel
 var x = d3.scaleLinear()
