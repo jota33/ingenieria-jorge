@@ -7,13 +7,13 @@
     
 <body>
     <svg id="s1" height=200 width=450></svg>
-             <input type="number" id="buttonSize" value=13>
+    <rect x="0" y="0" width="50" height="50"/>
+    
 
       <div id ="s2">
           <input type="number" id="buttonSize" value=13>
 <!-- Create a div where the circle will take place -->
 <div id="dataviz_buttonEventListener"></div>
-      <rect x="0" y="0" width="1550" height="550"/>
            </div>
 
           <!-- Add  button-->
@@ -58,7 +58,7 @@ d3.select("#buttonSize").on("input", changeSize )
 // Event listener to the radio button
 d3.select("#colorButton").on("change", changeColorSize )
 </script>
-            <div id ="s3">
+          
     <script>
 // Select the svg area
 var svg = d3.select("#s1")
@@ -74,7 +74,6 @@ var x = d3.scaleLinear()
 
 // Show the axis that corresponds to this scale
 svg.call(d3.axisBottom(x));
-svg.call(d3.axisBottom(xa));
 // Add 3 dots for 0, 50 and 100%
 svg.append("circle")
   .attr("cx", x(10)).attr("cy", 100).attr("r", 40).style("fill", "blue");
@@ -82,8 +81,10 @@ svg.append("circle")
   .attr("cx", x(50)).attr("cy", 100).attr("r", 40).style("fill", "red");
 svg.append("circle")
   .attr("cx", x(100)).attr("cy", 100).attr("r", 40).style("fill", "green");
+svg.call(d3.axisBottom(xa));
+
 </script>
-     </div>
+ 
 </div>
 
 </body>
