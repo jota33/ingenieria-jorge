@@ -14,6 +14,10 @@
 		.append("svg")
 		.attr("width", width)
 		.attr("height", height);
+	
+	var xabscale = d3.scaleLinear()
+		.domain([0, width)])
+		.range([0, width - 100]);
 
 	var xscale = d3.scaleLinear()
 		.domain([0, d3.max(data)])
@@ -28,6 +32,9 @@
 
 	var y_axis = d3.axisLeft()
 			.scale(yscale);
+	
+	var x_abs = d3.axisBottom()
+			.scale(xabscale);
 
 		svg.append("g")
 		   .attr("transform", "translate(50, 10)")
@@ -38,6 +45,7 @@
 		svg.append("g")
 				.attr("transform", "translate(50, " + xAxisTranslate  +")")
 				.call(x_axis)
+	                        .call(x_abs)
 
 </script>
 </body>
