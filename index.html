@@ -6,28 +6,19 @@
 </head>
     
 <body>
-    <svg id="s1" height=200 width=450></svg>
-    <rect x="0" y="0" width="50" height="50"/>
+     <div id="dataviz_buttonEventListener"></div>
+     <input type="number" id="buttonSize" value=13>
+     <svg id="s1" height=200 width=450></svg>
     
-
-      <div id ="s2">
-          <input type="number" id="buttonSize" value=13>
 <!-- Create a div where the circle will take place -->
-<div id="dataviz_buttonEventListener"></div>
-           </div>
+
 
           <!-- Add  button-->
-       
-<!--
-<div  id="colorButton">
-  <input type="radio" id="colorButton" name="colorButton" value="1"> Small<br>
-  <input type="radio" id="colorButton" name="colorButton" value="10"> Medium<br>
-  <input type="radio" id="colorButton" name="colorButton" value="100"> Big <br>
-</div> -->
+
 <script>
 
 // Initialize a circle
-var theCircle = d3.select("#s2")
+var theCircle = d3.select("#s1")
   .append("svg")
   .append("circle")
     .attr("cx", 0)
