@@ -17,11 +17,11 @@
 	
 	var xabscale = d3.scaleLinear()
 		.domain([0, width])
-		.range([0, width - 100]);
+		.range([0, width]);
 
 	var xscale = d3.scaleLinear()
 		.domain([0, d3.max(data)])
-		.range([0, width - 100]);
+		.range([0, width]);
 
 	var yscale = d3.scaleLinear()
 			.domain([0, d3.max(data)])
@@ -45,7 +45,9 @@
 		svg.append("g")
 				.attr("transform", "translate(50, " + xAxisTranslate  +")")
 				.call(x_axis)
-	                        .call(x_abs)
+		svg.append("g")
+				.attr("transform", "translate(50, " + xAxisTranslate  +")")
+				.call(x_abs)	                       
 
 </script>
 </body>
