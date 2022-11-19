@@ -3,38 +3,13 @@
 <head>
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-    
- <style>
- .responsive{
-  max-width:100%;
-  max-height:100%;
-}
-
-.center{
-  position: absolute;
-  top: 50%;
-  left: 50%; 
-  transform: translate(-50%, -50%);
-}
-
-parent{
-  position: relative;
-}  
-
-  text {
-    font: bold 36px Verdana, Helvetica, Arial, sans-serif;
-    fill: gray;
-  }
-   .graph-svg-component {
-    background-color: AliceBlue;
-}    
-</style>
 </head>
+    
 <body>
-    <div id="viz" class="parrent"> 
+    <div id="1"> 
               <rect x="0" y="0" width="1550" height="550"/>
 
-      <div id ="viz1" class="responsive center" >
+      <div id ="2">
           <input type="number" id="buttonSize" value=13>
 <!-- Create a div where the circle will take place -->
 <div id="dataviz_buttonEventListener"></div>
@@ -42,15 +17,13 @@ parent{
            </div>
 
           <!-- Add  button-->
-        
-
+       
 <!--
 <div  id="colorButton">
   <input type="radio" id="colorButton" name="colorButton" value="1"> Small<br>
   <input type="radio" id="colorButton" name="colorButton" value="10"> Medium<br>
   <input type="radio" id="colorButton" name="colorButton" value="100"> Big <br>
 </div> -->
-
 <script>
 
 // Initialize a circle
