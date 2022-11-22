@@ -8,7 +8,20 @@
 <body>
 <script>
 	var width = 400, height = 400;
-	var data = [0, 400/3, 400/2, 400];
+	var data = [0, 0.1, 0.5, 1];
+	
+	let fruits = ['Apple', 'Orange', 'Mango']
+
+        d3.select(".d3_fruit")
+		.selectAll("p")
+		.data(fruits)
+		.join("p") // the join method
+			.attr("class", "d3_fruit")
+        		.text((d) => d)
+
+// html
+
+<div class="d3_fruit"></div>
 	
 	var svg = d3.select("body")
 		.append("svg")
