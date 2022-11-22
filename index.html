@@ -17,11 +17,9 @@
 		.data(fruits)
 		.join("p") // the join method
 			.attr("class", "d3_fruit")
-        		.text((d) => d)
+     /   		.text((d) => d)
 
 // html
-
-<div class="d3_fruit"></div>
 	
 	var svg = d3.select("body")
 		.append("svg")
@@ -75,5 +73,7 @@
 				.call(x_abs)	                       
 
 </script>
+         <div class="d3_fruit"></div>
+	
 </body>
 </html>
