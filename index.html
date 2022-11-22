@@ -34,10 +34,10 @@
 			.scale(yscale);
 	
 	var x_abs = d3.axisBottom()
-			.scale(xabscale);
+			.scale(xabscale)
 
 		svg.append("g")
-		   .attr("transform", "translate(50, 10)")
+		   .attr("transform", "translate(50, 50)")
 		   .call(y_axis);
 
 	var xAxisTranslate = height/2 + 10;
@@ -46,7 +46,7 @@
 				.attr("transform", "translate(50, " + xAxisTranslate  +")")
 				.call(x_axis)
 		svg.append("g")
-				.attr("transform", "translate(50, " + xAxisTranslate  +")")
+				.attr("transform", "translate(23, " + xAxisTranslate  +")")
 				.call(x_abs)	                       
 
 </script>
